@@ -1,0 +1,8 @@
+import requests
+import csv
+api_key = "32249a40764967438381d56bc19dc7d5"
+
+r = requests.get('api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=32249a40764967438381d56bc19dc7d5').json()
+c = csv.write(open("mytemps.csv","w"),lineterminatior='\n')
+for item in r ['weather']['observation']:
+    c.writerow([item['date']['name'],item['temp'],item['feels_like'],item['wind_speed']])
